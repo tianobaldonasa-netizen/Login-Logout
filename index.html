@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Login & Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="overlay active">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Login Container -->
+    <main id="login-view" class="view hidden">
+        <div class="glass-card login-card">
+            <div class="card-header">
+                <h1>Nexus</h1>
+                <p>Welcome back! Please enter your details.</p>
+            </div>
+
+            <form id="auth-form">
+                <div class="input-group signup-only" style="display: none;">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="John Doe">
+                </div>
+
+                <div class="input-group signup-only" style="display: none;">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="25" min="1">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+
+                <div class="auth-buttons" id="login-buttons">
+                    <button type="submit" class="btn btn-primary" id="btn-login">Sign In</button>
+                    <button type="button" class="btn btn-secondary" id="btn-show-signup">Create Account</button>
+                </div>
+
+                <div class="auth-buttons" id="signup-buttons" style="display: none;">
+                    <button type="button" class="btn btn-primary" id="btn-signup">Sign Up</button>
+                    <button type="button" class="btn btn-secondary" id="btn-show-login">Back to Login</button>
+                </div>
+            </form>
+            <div id="auth-error" class="error-text"></div>
+        </div>
+    </main>
+
+    <!-- Dashboard Container -->
+    <main id="dashboard-view" class="view hidden">
+        <nav class="glass-nav">
+            <h2>Nexus Dashboard</h2>
+            <div class="user-info">
+                <span id="user-email-display"></span>
+                <button id="btn-logout" class="btn btn-outline">Log Out</button>
+            </div>
+        </nav>
+
+        <section class="dashboard-content glass-card">
+            <div class="dashboard-header">
+                <h3>Global Notes</h3>
+                <p>Share a thought with everyone.</p>
+            </div>
+
+            <form id="note-form" class="note-form">
+                <input type="text" id="note-input" placeholder="Type a note here..." required>
+                <button type="submit" class="btn btn-primary">Post Note</button>
+            </form>
+
+            <div id="notes-list" class="notes-list">
+                <!-- Notes will be injected here via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+    <!-- App Logic -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
